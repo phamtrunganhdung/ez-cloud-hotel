@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>facebook</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Miscellaneous" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Login-/-Form" transform="translate(-312.000000, -437.000000)">
+            <g id="Social-Network" transform="translate(257.000000, 436.000000)">
+                <g id="facebook" transform="translate(54.000000, 0.000000)">
+                    <rect id="Rectangle" x="0" y="0" width="16" height="16"></rect>
+                    <path d="M13.8333333,1 L2.16666667,1 C1.52208333,1 1,1.52208333 1,2.16666667 L1,13.8333333 C1,14.4779167 1.52208333,15 2.16666667,15 L8.58333333,15 L8.58333333,9.75 L6.83333333,9.75 L6.83333333,7.41666667 L8.58333333,7.41666667 L8.58333333,5.90758333 C8.58333333,4.09925 9.68758333,3.11458333 11.3010833,3.11458333 C12.074,3.11458333 12.7378333,3.17233333 12.9315,3.198 L12.9315,5.088 L11.8126667,5.08858333 C10.9353333,5.08858333 10.7655833,5.50566667 10.7655833,6.117 L10.7655833,7.41666667 L13.3555833,7.41666667 L12.77225,9.75 L10.7655833,9.75 L10.7655833,15 L13.8333333,15 C14.4779167,15 15,14.4779167 15,13.8333333 L15,2.16666667 C15,1.52208333 14.4779167,1 13.8333333,1 Z" id="Path" fill="#FFFFFF"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

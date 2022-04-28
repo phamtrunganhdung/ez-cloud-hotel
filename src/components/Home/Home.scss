@@ -1,0 +1,60 @@
+.home{
+    height: 100vh;
+    background-image: url("../../images/bg-new.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: auto;
+    text-align: center;
+    &-languages{
+        display: flex;
+        justify-content: flex-end;
+    }
+    &-box-icon {
+        padding: 20px 20px 0px 0px;
+        height: 30px;
+        width: 50px;
+    }
+    &-icon{
+        width: 100%;
+        height: 100%;
+    }
+    #jp-flag{
+        padding-top: 4px;
+        width: 72%;
+        height: 72%;
+    }
+    &-content, &-footer{
+        padding-top: 150px;
+    }
+    &-footer{
+        &-title{
+            color: white;
+            font-weight: 500;
+            font-size: 15px;
+        }
+        &-download{
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            &-app-store {
+                height: 30px;
+                width: 100px;
+                background-image: url("../../images/app-store.svg");
+            }
+            &-ch-play {
+                height: 30px;
+                width: 100px;
+                background-image: url("../../images/google-play.svg");
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .home{
+        &-content, &-footer{
+            padding-top: 50px;
+        }
+    }
+}

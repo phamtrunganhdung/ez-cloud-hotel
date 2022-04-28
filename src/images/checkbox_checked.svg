@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Design System/controls/Checkbox/Checked</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Design-System/controls/Checkbox/Checked" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M19,21 L5,21 C3.8954305,21 3,20.1045695 3,19 L3,5 C3,3.8954305 3.8954305,3 5,3 L19,3 C20.1045695,3 21,3.8954305 21,5 L21,19 C21,20.1045695 20.1045695,21 19,21 Z" id="Path" fill="#00A0DC"></path>
+        <g id="Design-System/Icon/Check-Mark" transform="translate(4.000000, 4.000000)" fill="#FFFFFF">
+            <path d="M5.61884756,10.7463448 L3.59330961,8.72080687 C3.08153884,8.2090361 3.08153884,7.37929175 3.59330961,6.86752099 L3.59330961,6.86752099 C4.10528929,6.3555413 4.93519372,6.35496257 5.44788697,6.8662277 L7.03306113,8.44698633 L10.5516528,4.92839466 C11.0634254,4.41662208 11.8931727,4.41662208 12.4049453,4.92839466 C12.4055275,4.92897693 12.4061092,4.92955973 12.4066904,4.93014309 L12.4066904,4.93014309 C12.9187435,5.44413032 12.9179597,6.27565978 12.4049387,6.78868085 L8.44727469,10.7463448 C7.66622611,11.5273934 6.39989615,11.5273934 5.61884756,10.7463448 Z" id="Path"></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Design System/controls/Checkbox/Uncheck</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Design-System/controls/Checkbox/Uncheck" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M19,20.5 C19.8284271,20.5 20.5,19.8284271 20.5,19 L20.5,5 C20.5,4.17157288 19.8284271,3.5 19,3.5 L5,3.5 C4.17157288,3.5 3.5,4.17157288 3.5,5 L3.5,19 C3.5,19.8284271 4.17157288,20.5 5,20.5 L19,20.5 Z" id="Path" stroke="#B2B2B2" fill="#FFFFFF"></path>
+    </g>
+</svg>
