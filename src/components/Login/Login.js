@@ -22,10 +22,14 @@ const Login = () => {
     console.log(isOwner);
   };
   return (
-    <Row className="login" justify="center" align="middle">
+    <Row className="login" type="flex" justify="center" align="middle">
       <Row className="login-container">
-        <div className="login-container-child-logo">
-          <Col className="login-info">
+        <Col
+          className="login-container-child-logo"
+          xs={{ span: 24 }}
+          md={{ span: 12 }}
+        >
+          <div className="login-info">
             <div className="login-info-logo">
               <div className="login-info-logo-main">
                 <img
@@ -41,7 +45,7 @@ const Login = () => {
                   alt=""
                 />
               </div>
-              <p className="login-info-logo-title">
+              <p className="login-info-logo-main-title">
                 Phần mềm quản lý khách sạn tốt nhất Việt Nam
               </p>
             </div>
@@ -61,10 +65,14 @@ const Login = () => {
                 Giải thưởng Sao Khuê 2019
               </p>
             </div>
-          </Col>
-        </div>
-        <div className="login-container-child-form">
-          <Col className="login-form">
+          </div>
+        </Col>
+        <Col
+          className="login-container-child-form"
+          xs={{ span: 24 }}
+          md={{ span: 12 }}
+        >
+          <div className="login-form">
             <div className="login-form-customer">
               <p className="login-form-customer-title">Tên đăng nhập / Email</p>
               <input ref={initInputRef} className="login-form-customer-email" />
@@ -100,8 +108,8 @@ const Login = () => {
                 Quên mật khẩu?
               </a>
             </div>
-          </Col>
-        </div>
+          </div>
+        </Col>
       </Row>
     </Row>
   );
