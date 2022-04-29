@@ -13,8 +13,8 @@
     }
     &-box-icon {
         padding-top: 20px;
-        height: 30px;
-        width: 50px;
+        height: 50px;
+        width: 55px;
         cursor: pointer;
     }
     &-icon{
@@ -24,10 +24,10 @@
     #jp-flag{
         padding-top: 4px;
         width: 72%;
-        height: 72%;
+        height: 85%;
     }
     &-content, &-footer{
-        padding-top: 10%
+        padding-top: 150px;
     }
     &-footer{
         &-title{
@@ -58,7 +58,7 @@
 @media only screen and (max-width: 600px) {
     .home{
         &-content, &-footer{
-            padding-top: 20%
+            padding-top: 25%
         }
     }
 }

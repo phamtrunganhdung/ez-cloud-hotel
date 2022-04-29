@@ -4,6 +4,7 @@ import main_name from "../../images/ezCloudhotel.svg";
 import sao_khue from "../../images/ic_sao_khue.svg";
 import is_owner from "../../images/checkbox_checked.svg";
 import not_owner from "../../images/checkbox_uncheck.svg";
+import { Row, Col } from "antd";
 import { useState, useRef, useEffect } from "react";
 
 const Login = () => {
@@ -21,23 +22,25 @@ const Login = () => {
     console.log(isOwner);
   };
   return (
-    <div className="login">
-      <div className="login-container">
+    <Row className="login" justify="center" align="middle">
+      <Row className="login-container">
         <div className="login-container-child-logo">
-          <div className="login-info">
+          <Col className="login-info">
             <div className="login-info-logo">
-              <div>
+              <div className="login-info-logo-main">
                 <img
                   className="login-info-logo-main-logo"
                   src={main_logo}
                   alt=""
                 />
               </div>
-              <img
-                className="login-info-logo-main-name"
-                src={main_name}
-                alt=""
-              />
+              <div className="login-info-logo-main">
+                <img
+                  className="login-info-logo-main-name"
+                  src={main_name}
+                  alt=""
+                />
+              </div>
               <p className="login-info-logo-title">
                 Phần mềm quản lý khách sạn tốt nhất Việt Nam
               </p>
@@ -58,10 +61,10 @@ const Login = () => {
                 Giải thưởng Sao Khuê 2019
               </p>
             </div>
-          </div>
+          </Col>
         </div>
         <div className="login-container-child-form">
-          <div className="login-form">
+          <Col className="login-form">
             <div className="login-form-customer">
               <p className="login-form-customer-title">Tên đăng nhập / Email</p>
               <input ref={initInputRef} className="login-form-customer-email" />
@@ -97,10 +100,10 @@ const Login = () => {
                 Quên mật khẩu?
               </a>
             </div>
-          </div>
+          </Col>
         </div>
-      </div>
-    </div>
+      </Row>
+    </Row>
   );
 };
 
