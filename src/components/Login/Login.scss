@@ -234,6 +234,8 @@
 
 @media only screen and (max-width: 767px) {
   .login {
+    width: 70%;
+    margin-left: 15%;
     &-info {
       &-achievement {
         display: none;
