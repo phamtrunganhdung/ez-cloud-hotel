@@ -4,13 +4,15 @@ import main_name from "../../images/ezCloudhotel.svg";
 import sao_khue from "../../images/ic_sao_khue.svg";
 import is_owner from "../../images/checkbox_checked.svg";
 import not_owner from "../../images/checkbox_uncheck.svg";
-import { Row, Col } from "antd";
+import { Row, Col, message } from "antd";
 import { useState, useRef, useEffect } from "react";
 import { Input } from "../Input/Input";
-import { UserOutlined, KeyOutlined, IdcardOutlined } from "@ant-design/icons";
+import { fetchData } from "../../api/useFetch";
 
 const Login = () => {
   const [isOwner, setIsOwner] = useState(false);
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
   const initInputRef = useRef();
   const idHotelInputRef = useRef();
   useEffect(() => {
@@ -19,8 +21,37 @@ const Login = () => {
   useEffect(() => {
     isOwner ? idHotelInputRef.current.focus() : initInputRef.current.focus();
   }, [isOwner]);
+
   const checkIsOwner = () => {
     setIsOwner(!isOwner);
+  };
+  const handleOnChangeUserName = (e) => {
+    setUserName(e.target.value);
+  };
+  const handleOnChangePassword = (e) => {
+    setPassword(e.target.value);
+  };
+  const loginSuccess = (res) => {
+    res.success == 1
+      ? message.success("Đăng nhập thành công")
+      : message.error("Đăng nhập thất bại");
+  };
+  const loginError = (error) => {
+    message.error(error);
+  };
+
+  const handleLogin = () => {
+    fetchData(
+      "/api/User/getCurrentUser",
+      "post",
+      "application/json",
+      JSON.stringify({
+        username: userName,
+        password: password,
+      }),
+      loginSuccess,
+      loginError
+    );
   };
   return (
     <Row className="login" type="flex" justify="center" align="middle">
@@ -74,52 +105,68 @@ const Login = () => {
           md={{ span: 12 }}
         >
           <div className="login-form">
-            <div className="login-form-customer">
-              <p className="login-form-customer-title">Tên đăng nhập / Email</p>
-              <Input
-                ref={initInputRef}
-                className="login-form-customer-email"
-                placeholder="Nhập vào tài khoản"
-                suffix={<UserOutlined />}
-              />
-              <p className="login-form-customer-title">Mật khẩu</p>
-              <Input
-                className="login-form-customer-password"
-                placeholder="Nhập vào mật khẩu"
-                suffix={<KeyOutlined />}
-              />
-              <div className="login-form-check">
-                <img
-                  className="login-form-check-owner"
-                  src={isOwner ? is_owner : not_owner}
-                  alt=""
-                  onClick={checkIsOwner}
+            <form method="POST">
+              <div className="login-form-customer">
+                <p className="login-form-customer-title">
+                  Tên đăng nhập / Email
+                </p>
+                <Input
+                  ref={initInputRef}
+                  className="login-form-customer-email"
+                  placeholder="Nhập vào tài khoản"
+                  value={userName}
+                  onChange={handleOnChangeUserName}
+                  prefix={main_logo}
+                  name="userName"
                 />
-                <p className="login-form-check-title">Chủ khách sạn</p>
-              </div>
-            </div>
-            {isOwner && (
-              <>
-                <div className="login-form-owner">
-                  <p className="login-form-owner-title">Mã khách sạn</p>
-                  <Input
-                    ref={idHotelInputRef}
-                    className="login-form-owner-id"
-                    placeholder="Nhập vào mã khách sạn"
-                    suffix={<IdcardOutlined />}
+                <p className="login-form-customer-title">Mật khẩu</p>
+                <Input
+                  type="password"
+                  className="login-form-customer-password"
+                  placeholder="Nhập vào mật khẩu"
+                  name="password"
+                  value={password}
+                  onChange={handleOnChangePassword}
+                  suffix={sao_khue}
+                />
+                <div className="login-form-check">
+                  <img
+                    className="login-form-check-owner"
+                    src={isOwner ? is_owner : not_owner}
+                    alt=""
+                    onClick={checkIsOwner}
                   />
+                  <p className="login-form-check-title">Chủ khách sạn</p>
                 </div>
-              </>
-            )}
-            <div className="login-form-handle">
-              <button className="login-form-handle-login">Đăng nhập</button>
-              <a
-                href="http://localhost:3000/"
-                className="login-form-handle-reset-pass"
-              >
-                Quên mật khẩu?
-              </a>
-            </div>
+              </div>
+              {isOwner && (
+                <>
+                  <div className="login-form-owner">
+                    <p className="login-form-owner-title">Mã khách sạn</p>
+                    <Input
+                      ref={idHotelInputRef}
+                      className="login-form-owner-id"
+                      placeholder="Nhập vào mã khách sạn"
+                    />
+                  </div>
+                </>
+              )}
+              <div className="login-form-handle">
+                <button
+                  type="button"
+                  className="login-form-handle-login"
+                  onClick={handleLogin}
+                >
+                  Đăng nhập
+                </button>
+                <a
+                  href="http://localhost:3000/"
+                  className="login-form-handle-reset-pass"
+                >
+                  Quên mật khẩu?
+                </a>
+              </div>
+            </form>
           </div>
         </Col>
       </Row>
