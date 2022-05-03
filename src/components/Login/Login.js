@@ -6,6 +6,8 @@ import is_owner from "../../images/checkbox_checked.svg";
 import not_owner from "../../images/checkbox_uncheck.svg";
 import { Row, Col } from "antd";
 import { useState, useRef, useEffect } from "react";
+import { Input } from "../Input/Input";
+import { UserOutlined, KeyOutlined, IdcardOutlined } from "@ant-design/icons";
 
 const Login = () => {
   const [isOwner, setIsOwner] = useState(false);
@@ -19,7 +21,6 @@ const Login = () => {
   }, [isOwner]);
   const checkIsOwner = () => {
     setIsOwner(!isOwner);
-    console.log(isOwner);
   };
   return (
     <Row className="login" type="flex" justify="center" align="middle">
@@ -75,9 +76,18 @@ const Login = () => {
           <div className="login-form">
             <div className="login-form-customer">
               <p className="login-form-customer-title">Tên đăng nhập / Email</p>
-              <input ref={initInputRef} className="login-form-customer-email" />
+              <Input
+                ref={initInputRef}
+                className="login-form-customer-email"
+                placeholder="Nhập vào tài khoản"
+                suffix={<UserOutlined />}
+              />
               <p className="login-form-customer-title">Mật khẩu</p>
-              <input className="login-form-customer-password" />
+              <Input
+                className="login-form-customer-password"
+                placeholder="Nhập vào mật khẩu"
+                suffix={<KeyOutlined />}
+              />
               <div className="login-form-check">
                 <img
                   className="login-form-check-owner"
@@ -92,9 +102,11 @@ const Login = () => {
               <>
                 <div className="login-form-owner">
                   <p className="login-form-owner-title">Mã khách sạn</p>
-                  <input
+                  <Input
                     ref={idHotelInputRef}
                     className="login-form-owner-id"
+                    placeholder="Nhập vào mã khách sạn"
+                    suffix={<IdcardOutlined />}
                   />
                 </div>
               </>

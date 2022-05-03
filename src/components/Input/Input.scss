@@ -1,0 +1,35 @@
+$border-color: rgb(133, 53, 69);
+$border-color-focus: rgba(32, 135, 204, 0.808);
+.ant-input,
+.ant-input-affix-wrapper {
+  border: 1px solid $border-color;
+  border-radius: 7px;
+  text-transform: none;
+  text-align: start;
+  cursor: text;
+  &-group-addon {
+    cursor: pointer;
+    border: 1px solid $border-color;
+    border-radius: 7px;
+  }
+  &:focus,
+  &-focused {
+    outline: none !important;
+    border: 1px solid $border-color-focus;
+    box-shadow: 0 0 3px #719ece;
+    .ant-input-prefix,
+    .ant-input-suffix {
+      color: $border-color-focus;
+    }
+  }
+  &:hover {
+    .ant-input-prefix,
+    .ant-input-suffix {
+      color: $border-color-focus;
+    }
+  }
+}
+.ant-input-prefix,
+.ant-input-suffix {
+  color: $border-color;
+}
