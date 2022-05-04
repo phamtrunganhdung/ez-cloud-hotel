@@ -95,7 +95,7 @@ const Room = () => {
     data.current = fetchData(
       "/api/Defines/GetRoom",
       "post",
-      "multipart/form-data",
+      "",
       formData,
       getRoomSuccess,
       getRoomError
