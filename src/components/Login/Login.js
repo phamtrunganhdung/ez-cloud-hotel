@@ -8,8 +8,9 @@ import { Row, Col, message } from "antd";
 import { useState, useRef, useEffect } from "react";
 import { Input } from "../Input/Input";
 import { fetchData } from "../../api/useFetch";
-
+import { useNavigate } from "react-router-dom";
 const Login = () => {
+  let navigate = useNavigate();
   const [isOwner, setIsOwner] = useState(false);
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -31,9 +32,12 @@ const Login = () => {
   const handleOnChangePassword = (e) => {
     setPassword(e.target.value);
   };
-  const loginSuccess = (res) => {
-    res.success == 1
-      ? message.success("Đăng nhập thành công")
+  const checkLogin = (res) => {
+    res.success === "1"
+      ? message
+          .loading("Đang đăng nhập", 1)
+          .then(() => message.success("Đăng nhập thành công", 1))
+          .then(() => navigate("/room"))
       : message.error("Đăng nhập thất bại");
   };
   const loginError = (error) => {
@@ -41,17 +45,28 @@ const Login = () => {
   };
 
   const handleLogin = () => {
-    fetchData(
-      "/api/User/getCurrentUser",
-      "post",
-      "application/json",
-      JSON.stringify({
-        username: userName,
-        password: password,
-      }),
-      loginSuccess,
-      loginError
-    );
+    if (
+      userName !== "" &&
+      userName !== undefined &&
+      userName !== null &&
+      password !== "" &&
+      password !== undefined &&
+      password !== null
+    ) {
+      fetchData(
+        "/api/User/getCurrentUser",
+        "post",
+        "application/json",
+        JSON.stringify({
+          username: userName,
+          password: password,
+        }),
+        checkLogin,
+        loginError
+      );
+    } else {
+      message.warning("Vui lòng nhập đầy đủ thông tin");
+    }
   };
   return (
     <Row className="login" type="flex" justify="center" align="middle">
@@ -63,7 +78,7 @@ const Login = () => {
         >
           <div className="login-info">
             <div className="login-info-logo">
-              <div className="login-info-logo-main">
+              <div className="login-info-logo-main animation-logo">
                 <img
                   className="login-info-logo-main-logo"
                   src={main_logo}

@@ -15,6 +15,7 @@ const CustomInput = forwardRef((props, ref) => {
     autoFocus,
     placeholder,
     readOnly,
+    required,
     disabled,
     onChange,
   } = props;
@@ -44,6 +45,7 @@ const CustomInput = forwardRef((props, ref) => {
             autoFocus={autoFocus}
             placeholder={placeholder}
             readOnly={readOnly}
+            required={required}
             disabled={disabled}
             onChange={onChange ? (e) => onChange(e) : null}
           />
@@ -71,6 +73,7 @@ const CustomInput = forwardRef((props, ref) => {
             autoFocus={autoFocus}
             placeholder={placeholder}
             readOnly={readOnly}
+            required={required}
             disabled={disabled}
             onChange={onChange ? (e) => onChange(e) : null}
           />

@@ -1,3 +1,5 @@
+import { URL_API } from "./constant/constant";
+
 export function fetchData(
   url,
   method,
@@ -6,7 +8,6 @@ export function fetchData(
   callBackSuccess,
   callBackError
 ) {
-  const URL_API = "http://192.168.20.100";
   let header = {
     Authorization:
       "Basic " + btoa("Ds7C2xG+BVHPAvUON5VijQ==:JDfmfXQvuqHrXBdUARcoLw=="),
@@ -18,15 +19,12 @@ export function fetchData(
         "Basic " + btoa("Ds7C2xG+BVHPAvUON5VijQ==:JDfmfXQvuqHrXBdUARcoLw=="),
     };
   }
-
   fetch(URL_API + url, {
     method: method,
     headers: header,
     body: data,
   })
     .then((res) => res.json())
-    .then(
-      (res) => callBackSuccess(res),
-      (error) => callBackError(error)
-    );
+    .then((res) => callBackSuccess(res))
+    .catch((error) => callBackError(error));
 }
