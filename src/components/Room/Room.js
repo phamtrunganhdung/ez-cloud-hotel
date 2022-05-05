@@ -2,6 +2,7 @@ import "./Room.scss";
 import { Table, Space, Input } from "antd";
 import { useEffect, useState } from "react";
 import { fetchData } from "../../api/useFetch";
+import { SearchOutlined } from "@ant-design/icons";
 
 const Room = () => {
   const columns = [
@@ -10,8 +11,25 @@ const Room = () => {
       dataIndex: "Ma",
       key: "Ma",
       sorter: (record1, record2) => record1.Ma > record2.Ma,
-      filterDropdown: () => {
-        return <Input></Input>;
+      filterDropdown: ({ selectedKeys, setSelectedKeys, confirm }) => {
+        return (
+          <Input
+            placeholder="Nhập để tìm kiếm"
+            value={selectedKeys[0]}
+            onChange={(e) => {
+              setSelectedKeys(e.target.value ? [e.target.value] : []);
+            }}
+            onPressEnter={() => {
+              confirm();
+            }}
+          ></Input>
+        );
+      },
+      filterIcon: () => {
+        return <SearchOutlined />;
+      },
+      onFilter: (value, record) => {
+        return record.Ma.includes(value);
       },
     },
     {
@@ -66,13 +84,12 @@ const Room = () => {
       key: "ThaoTac",
       render: () => (
         <Space size="middle">
-          <button>Update</button>
-          <button>Delete</button>
+          <button>Chỉnh sửa</button>
+          <button>Xóa</button>
         </Space>
       ),
     },
   ];
-
   const [pagination, setPagination] = useState({
     current: 1,
     pageSize: 10,
