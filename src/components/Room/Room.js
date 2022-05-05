@@ -1,6 +1,6 @@
 import "./Room.scss";
-import { Table, Space } from "antd";
-import { useEffect, useRef } from "react";
+import { Table, Space, Input } from "antd";
+import { useEffect, useState } from "react";
 import { fetchData } from "../../api/useFetch";
 
 const Room = () => {
@@ -9,30 +9,60 @@ const Room = () => {
       title: "Mã phòng",
       dataIndex: "Ma",
       key: "Ma",
+      sorter: (record1, record2) => record1.Ma > record2.Ma,
+      filterDropdown: () => {
+        return <Input></Input>;
+      },
     },
     {
       title: "Mã loại phòng",
       dataIndex: "MaLoaiPhong",
       key: "MaLoaiPhong",
+      sorter: (record1, record2) => record1.MaLoaiPhong > record2.MaLoaiPhong,
     },
     {
       title: "Khu vực",
       dataIndex: "KhuVuc",
       key: "KhuVuc",
+      sorter: (record1, record2) => record1.KhuVuc > record2.KhuVuc,
     },
     {
       title: "Tình trạng",
       dataIndex: "TinhTrang",
       key: "TinhTrang",
+      filters: [
+        { text: "1", value: "1" },
+        { text: "2", value: "2" },
+        { text: "3", value: "3" },
+        { text: "4", value: "4" },
+      ],
+      onFilter: (value, record) => {
+        console.log(record);
+        if (value === "1" && record.TinhTrang === 1) {
+          return true;
+        }
+        if (value === "2" && record.TinhTrang === 2) {
+          return true;
+        }
+        if (value === "3" && record.TinhTrang === 3) {
+          return true;
+        }
+        if (value === "4" && record.TinhTrang === 4) {
+          return true;
+        }
+        return false;
+      },
     },
     {
       title: "Số người",
       dataIndex: "SoNguoi",
       key: "SoNguoi",
+      sorter: (record1, record2) => record1.SoNguoi > record2.SoNguoi,
     },
 
     {
       title: "Thao tác",
+      dataIndex: "ThaoTac",
       key: "ThaoTac",
       render: () => (
         <Space size="middle">
@@ -43,71 +73,65 @@ const Room = () => {
     },
   ];
 
-  const data = useRef([]);
+  const [pagination, setPagination] = useState({
+    current: 1,
+    pageSize: 10,
+  });
   let formData = new FormData();
 
-  //   const data = [
-  //     {
-  //       key: "1",
-  //       name: "John Brown",
-  //       age: 32,
-  //       address: "New York No. 1 Lake Park",
-  //       tags: ["nice", "developer"],
-  //     },
-  //     {
-  //       key: "2",
-  //       name: "Jim Green",
-  //       age: 42,
-  //       address: "London No. 1 Lake Park",
-  //       tags: ["loser"],
-  //     },
-  //     {
-  //       key: "3",
-  //       name: "Joe Black",
-  //       age: 32,
-  //       address: "Sidney No. 1 Lake Park",
-  //       tags: ["cool", "teacher"],
-  //     },
-  //   ];
+  const [loading, setLoading] = useState(false);
 
-  const getRoomSuccess = () => {
-    console.log("success");
+  const [data, setData] = useState([]);
+
+  const getRoomError = (error) => {
+    console.log("Lỗi: ", error);
   };
-  const getRoomError = () => {
-    console.log("error");
+
+  const handleTableChange = (pagination, filters, sorter) => {
+    fetch({ pagination });
   };
 
   useEffect(() => {
+    fetch({ pagination });
+  }, []);
+
+  const fetch = (params = {}) => {
+    setLoading(true);
     formData.append(
       "param",
       JSON.stringify({
-        results: 25,
-        page: 1,
+        results: params.pagination.pageSize,
+        page: params.pagination.current,
         sortField: "",
         sortOrder: "",
         searchInfo: "",
       })
     );
-    for (var pair of formData.entries()) {
-      console.log(pair[0] + ", " + pair[1]);
-    }
-
-    data.current = fetchData(
+    fetchData(
       "/api/Defines/GetRoom",
       "post",
       "",
       formData,
-      getRoomSuccess,
+      (res) => {
+        setData(JSON.parse(res.data));
+        setPagination({ ...params.pagination, total: res.totalRow });
+        setLoading(false);
+      },
       getRoomError
     );
-    console.log(data.current);
-  }, [formData]);
+  };
+
   return (
     <div className="room">
       <Table
+        rowKey="Ma"
         className="room-table"
         columns={columns}
-        dataSource={data.current}
+        dataSource={data}
+        loading={loading}
+        pagination={pagination}
+        onChange={handleTableChange}
+        scroll={{ y: 650, x: 850 }}
       />
     </div>
   );
